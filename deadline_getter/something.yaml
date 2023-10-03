@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deadline-deployment
+spec:
+  replicas: 1  # Adjust the number of desired replicas as needed
+  selector:
+    matchLabels:
+      app: deadline
+  template:
+    metadata:
+      labels:
+        app: deadline
+    spec:
+      containers:
+      - name: deadline-getter
+        imagePullPolicy: IfNotPresent
+        image: app3:latest
+        ports:
+        - containerPort: 8083
+
+           # Adjust the port as needed

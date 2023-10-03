@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: task-info-deployment
+spec:
+  selector:
+    app: task-info-deployment
+  ports:
+    - protocol: TCP
+      port: 80  # Port exposed by the service
+      targetPort: 8083  # Port on the pods to forward traffic to

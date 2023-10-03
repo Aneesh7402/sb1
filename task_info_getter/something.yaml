@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: task-info-deployment
+spec:
+  replicas: 1  # Adjust the number of desired replicas as needed
+  selector:
+    matchLabels:
+      app: task-info
+  template:
+    metadata:
+      labels:
+        app: task-info
+    spec:
+      containers:
+      - name: task-info
+        imagePullPolicy: IfNotPresent
+        image: task_info_getter:latest
+        ports:
+        - port: 8083
+          containerPort: 8083 # Adjust the port as needed
